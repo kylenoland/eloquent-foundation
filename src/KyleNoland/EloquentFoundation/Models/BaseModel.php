@@ -37,6 +37,14 @@ class BaseModel extends Model
 
 
 	/**
+	 * The attributes that should be return as Carbon instances
+	 *
+	 * @var array
+	 */
+	protected $dates = array();
+
+
+	/**
 	 * Numeric attributes
 	 *
 	 * @var array
@@ -85,18 +93,16 @@ class BaseModel extends Model
 
 
 	/**
-	 * Get the created_at attribute
+	 * Date attributes to be returned as Carbon instances
 	 *
-	 * @param string $format
-	 *
-	 * @return bool|string
+	 * @return array
 	 */
-	public function getCreatedAt($format = 'm/d/Y')
+	public function getDates()
 	{
-		if( ! is_null($this->created_at))
-		{
-			return format_date($this->created_at, $format);
-		}
+		return array_merge(
+			array('created_at', 'updated_at', 'deleted_at'),
+			$this->dates
+		);
 	}
 
 
@@ -108,49 +114,6 @@ class BaseModel extends Model
 	public function getCurrencyAttributes()
 	{
 		return $this->currencyAttributes;
-	}
-
-
-	/**
-	 * Get the date attributes array
-	 *
-	 * @return array
-	 */
-	public function getDateAttributes()
-	{
-		return $this->dateAttributes;
-	}
-
-
-	/**
-	 * Get the deleted_at attribute
-	 *
-	 * @param string $format
-	 *
-	 * @return bool|string
-	 */
-	public function getDeletedAt($format = 'm/d/Y')
-	{
-		if( ! is_null($this->deleted_at))
-		{
-			return format_date($this->deleted_at, $format);
-		}
-	}
-
-
-	/**
-	 * Get the updated_at attribute
-	 *
-	 * @param string $format
-	 *
-	 * @return bool|string
-	 */
-	public function getUpdatedAt($format = 'm/d/Y')
-	{
-		if( ! is_null($this->updated_at))
-		{
-			return format_date($this->updated_at, $format);
-		}
 	}
 
 
@@ -173,17 +136,6 @@ class BaseModel extends Model
 	public function hasCurrencyAttributes()
 	{
 		return ! empty($this->currencyAttributes);
-	}
-
-
-	/**
-	 * Does the model have any date attributes
-	 *
-	 * @return bool
-	 */
-	public function hasDateAttributes()
-	{
-		return ! empty($this->dateAttributes);
 	}
 
 
