@@ -1,6 +1,7 @@
 {
     "name": "kyle-noland/eloquent-foundation",
-    "description": "",
+    "description": "A set of base classes for working with Laravel Eloquent Repositories, Models, Collections and Observers",
+    "license": "MIT",
     "authors": [
         {
             "name": "Kyle Noland",
@@ -9,7 +10,7 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "illuminate/support": "4.2.*"
+        "illuminate/support": "5.*"
     },
     "autoload": {
         "classmap": [

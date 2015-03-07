@@ -1,4 +1,4 @@
-<?php namespace KyleNoland\EloquentFoundation;
+<?php namespace KyleNoland\EloquentFoundation\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -18,7 +18,7 @@ class EloquentFoundationServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('kyle-noland/eloquent-foundation');
+		$this->package('KyleNoland/EloquentFoundation');
 	}
 
 	/**
@@ -28,7 +28,10 @@ class EloquentFoundationServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		//
+		$this->app->bind(
+			'KyleNoland\EloquentFoundation\Contracts\BaseRepositoryInterface',
+			'KyleNoland\EloquentFoundation\Repositories\BaseRepository'
+		);
 	}
 
 	/**
