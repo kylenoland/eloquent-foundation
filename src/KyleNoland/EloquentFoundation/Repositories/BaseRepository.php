@@ -1,7 +1,7 @@
 <?php namespace KyleNoland\EloquentFoundation\Repositories;
 
-use ADAM\Contracts\BaseRepositoryInterface;
 use Illuminate\Database\Eloquent\Builder;
+use KyleNoland\EloquentFoundation\Contracts\BaseRepositoryInterface;
 
 abstract class BaseRepository implements BaseRepositoryInterface {
 

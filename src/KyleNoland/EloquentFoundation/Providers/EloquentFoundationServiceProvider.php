@@ -18,7 +18,7 @@ class EloquentFoundationServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		
+
 	}
 
 	/**
