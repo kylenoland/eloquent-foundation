@@ -1,6 +1,6 @@
 <?php namespace KyleNoland\EloquentFoundation\Contracts;
 
-interface BaseRepositoryInterface {
+interface BaseRepositoryContract {
 
 	/**
 	 * Get all the models
