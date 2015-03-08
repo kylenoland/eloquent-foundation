@@ -54,5 +54,5 @@ class BaseCollection extends Collection {
 	{
 		return implode(',', $this->lists($field));
 	}
-	
+
 }
