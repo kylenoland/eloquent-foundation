@@ -1,9 +1,9 @@
 <?php namespace KyleNoland\EloquentFoundation\Repositories;
 
 use Illuminate\Database\Eloquent\Builder;
-use KyleNoland\EloquentFoundation\Contracts\BaseRepositoryInterface;
+use KyleNoland\EloquentFoundation\Contracts\BaseRepositoryContract;
 
-abstract class BaseRepository implements BaseRepositoryInterface {
+abstract class BaseRepository implements BaseRepositoryContract {
 
 	/**
 	 * Eloquent model

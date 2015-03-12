@@ -29,7 +29,7 @@ class EloquentFoundationServiceProvider extends ServiceProvider {
 	public function register()
 	{
 		$this->app->bind(
-			'KyleNoland\EloquentFoundation\Contracts\BaseRepositoryInterface',
+			'KyleNoland\EloquentFoundation\Contracts\BaseRepositoryContract',
 			'KyleNoland\EloquentFoundation\Repositories\BaseRepository'
 		);
 	}
