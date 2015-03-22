@@ -251,7 +251,9 @@ abstract class BaseRepository implements BaseRepositoryContract {
 			return $this->query;
 		}
 
-		return $this->model->newQuery();
+		$this->query = $this->model->newQuery();
+
+		return $this->query;
 	}
 
 }
