@@ -41,7 +41,7 @@ class BaseObserver {
 		{
 			if( ! is_null($model->getAttribute($attribute)))
 			{
-				$stripped = preg_replace('(\D+)', '', $model->getAttribute($attribute);
+				$stripped = preg_replace('(\D+)', '', $model->getAttribute($attribute));
 
 				$stripped = empty($stripped) ? null : $stripped;
 
