@@ -56,7 +56,6 @@ class BaseObserver {
 	{
 		$allAttributes      = array_keys($model->getAttributes());
 		$currencyAttributes = $model->getCurrencyAttributes();
-		$dateAttributes     = $model->getDateAttributes();
 		$numericAttributes  = $model->getNumericAttributes();
 		$otherAttributes    = array('created_at', 'updated_at', 'deleted_at');
 
@@ -68,7 +67,6 @@ class BaseObserver {
 		$attributes = array_diff(
 			$allAttributes,
 			$currencyAttributes,
-			$dateAttributes,
 			$numericAttributes,
 			$otherAttributes
 		);
