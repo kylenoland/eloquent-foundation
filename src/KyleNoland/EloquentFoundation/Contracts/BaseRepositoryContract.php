@@ -19,6 +19,17 @@ interface BaseRepositoryContract {
 
 
 	/**
+	 * Count the specified models
+	 *
+	 * @param $column
+	 * @param $value
+	 *
+	 * @return int
+	 */
+	public function countBy($column, $value);
+
+
+	/**
 	 * Create a new model
 	 *
 	 * @param array $data

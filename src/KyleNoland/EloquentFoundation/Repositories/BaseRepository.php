@@ -44,6 +44,20 @@ abstract class BaseRepository implements BaseRepositoryContract {
 
 
 	/**
+	 * Count the specified models
+	 * 
+	 * @param $column
+	 * @param $value
+	 *
+	 * @return int
+	 */
+	public function countBy($column, $value)
+	{
+		return $this->where($column, $value)->count();
+	}
+
+
+	/**
 	 * Create a new model
 	 *
 	 * @param array $data
