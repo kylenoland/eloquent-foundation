@@ -94,6 +94,16 @@ interface BaseRepositoryContract {
 
 
 	/**
+	 * Add a group by clause to the query
+	 *
+	 * @param $columns
+	 *
+	 * @return $this
+	 */
+	public function groupBy($columns);
+
+
+	/**
 	 * Update the specified model
 	 *
 	 * @param int   $id

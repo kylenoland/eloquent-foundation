@@ -45,7 +45,7 @@ abstract class BaseRepository implements BaseRepositoryContract {
 
 	/**
 	 * Count the specified models
-	 * 
+	 *
 	 * @param $column
 	 * @param $value
 	 *
@@ -161,6 +161,21 @@ abstract class BaseRepository implements BaseRepositoryContract {
 		$this->query = null;
 
 		return $model;
+	}
+
+
+	/**
+	 * Add a group by clause to the query
+	 *
+	 * @param $columns
+	 *
+	 * @return $this
+	 */
+	public function groupBy($columns)
+	{
+		$this->query()->getQuery()->groupBy($columns);
+
+		return $this;
 	}
 
 
