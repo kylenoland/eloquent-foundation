@@ -55,4 +55,57 @@ class BaseCollection extends Collection {
 		return implode(',', $this->lists($field));
 	}
 
+
+	/**
+	 * Get the first Collection member having the specified attribute and value
+	 *
+	 * @param string $attribute
+	 * @param string $value
+	 *
+	 * @return null|Model
+	 */
+	public function firstBy($attribute, $value)
+	{
+		return $this->getBy($attribute, $value)->first();
+	}
+
+
+	/**
+	 * Get a subset of the current Collection where all members share a common attribute/value combination
+	 *
+	 * @param string $attribute
+	 * @param string $value
+	 *
+	 * @return \Illuminate\Database\Eloquent\Collection
+	 */
+	public function getBy($attribute, $value)
+	{
+		return $this->filter(function(Model $model) use($attribute, $value)
+		{
+			return $model->getAttribute($attribute) == $value;
+		});
+	}
+
+
+	/**
+	 * Get and remove the first Collection member with the specified attribute and value
+	 *
+	 * @param string $attribute
+	 * @param string $value
+	 *
+	 * @return Model|null
+	 */
+	public function pullFirstBy($attribute, $value)
+	{
+		foreach($this->items as $key => $model)
+		{
+			if($model->getAttribute($attribute) == $value)
+			{
+				return $this->pull($key);
+			}
+		}
+
+		return null;
+	}
+
 }
