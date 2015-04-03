@@ -104,6 +104,16 @@ interface BaseRepositoryContract {
 
 
 	/**
+	 * Add a limit clause to the query
+	 *
+	 * @param int $limit
+	 *
+	 * @return $this
+	 */
+	public function limit($limit);
+
+
+	/**
 	 * Update the specified model
 	 *
 	 * @param int   $id

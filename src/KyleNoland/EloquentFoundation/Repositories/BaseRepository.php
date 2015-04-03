@@ -180,6 +180,21 @@ abstract class BaseRepository implements BaseRepositoryContract {
 
 
 	/**
+	 * Add a limit clause to the query
+	 * 
+	 * @param int $limit
+	 *
+	 * @return $this
+	 */
+	public function limit($limit)
+	{
+		$this->query()->getQuery()->limit($limit);
+
+		return $this;
+	}
+
+
+	/**
 	 * Update the specified model
 	 *
 	 * @param int   $id
