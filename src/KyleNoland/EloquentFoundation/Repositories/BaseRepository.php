@@ -181,7 +181,7 @@ abstract class BaseRepository implements BaseRepositoryContract {
 
 	/**
 	 * Add a limit clause to the query
-	 * 
+	 *
 	 * @param int $limit
 	 *
 	 * @return $this
@@ -288,7 +288,7 @@ abstract class BaseRepository implements BaseRepositoryContract {
 	 *
 	 * @return \Illuminate\Database\Eloquent\Builder
 	 */
-	private function query()
+	protected function query()
 	{
 		if($this->query instanceof Builder)
 		{
