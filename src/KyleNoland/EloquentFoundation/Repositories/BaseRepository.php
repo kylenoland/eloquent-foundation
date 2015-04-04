@@ -133,6 +133,21 @@ abstract class BaseRepository implements BaseRepositoryContract {
 
 
 	/**
+	 * Get the first specified model record from the database
+	 *
+	 * @return \Illuminate\Database\Eloquent\Model
+	 */
+	public function firstOrFail()
+	{
+		$model = $this->query()->firstOrFail();
+
+		$this->query = null;
+
+		return $model;
+	}
+
+
+	/**
 	 * Get the specified models
 	 *
 	 * @return \Illuminate\Database\Eloquent\Collection|static[]

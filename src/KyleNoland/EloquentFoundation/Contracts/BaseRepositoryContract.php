@@ -76,6 +76,14 @@ interface BaseRepositoryContract {
 
 
 	/**
+	 * Get the first specified model record from the database
+	 *
+	 * @return \Illuminate\Database\Eloquent\Model
+	 */
+	public function firstOrFail();
+
+
+	/**
 	 * Get the specified models
 	 *
 	 * @return \Illuminate\Database\Eloquent\Collection|static[]
