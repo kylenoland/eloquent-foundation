@@ -10,7 +10,7 @@ trait DropdownListableTrait {
 	 *
 	 * @return array
 	 */
-	public function getDdlOptions($valueColumn = 'id', $textColumn = 'name', array $placeholders = null)
+	public static function getDdlOptions($valueColumn = 'id', $textColumn = 'name', array $placeholders = null)
 	{
 		$models = self::all();
 
