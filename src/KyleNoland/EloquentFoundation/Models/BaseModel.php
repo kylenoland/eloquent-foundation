@@ -1,9 +1,13 @@
 <?php namespace KyleNoland\EloquentFoundation\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use KyleNoland\EloquentFoundation\Traits\DropdownListableTrait;
 
-class BaseModel extends Model
-{
+class BaseModel extends Model {
+
+	use DropdownListableTrait;
+
+
 	/**
 	 * Models that always get eagerly loaded with this model
 	 *
@@ -58,38 +62,6 @@ class BaseModel extends Model
 	 * @var array
 	 */
 	protected $currencyAttributes = array();
-
-
-	/**
-	 * Optional placeholder value and text when generating DDL option arrays
-	 *
-	 * @var array
-	 */
-	protected static $ddlPlaceholder = array();
-
-
-	/**
-	 * Static class instance
-	 *
-	 * @var mixed
-	 */
-	protected static $_instance = null;
-
-
-	/**
-	 * Get an instance of this class
-	 *
-	 * @return mixed|static
-	 */
-	private static function getInstance()
-	{
-		if(is_null(self::$_instance))
-		{
-			self::$_instance = new static;
-		}
-
-		return self::$_instance;
-	}
 
 
 	/**
@@ -149,69 +121,4 @@ class BaseModel extends Model
 		return ! empty($this->numericAttributes);
 	}
 
-
-	/**
-	 * Get an array of drop down menu options
-	 *
-	 * @param string $valueColumn
-	 * @param string $textColumn
-	 *
-	 * @return array
-	 */
-	public static function getDdlOptions($valueColumn = 'id', $textColumn = 'name')
-	{
-		$instance = self::getInstance();
-
-		$models = $instance->newQuery()->get();
-
-		$options = array();
-
-		if( ! empty(self::$ddlPlaceholder))
-		{
-			$options = self::$ddlPlaceholder;
-
-			self::$ddlPlaceholder = array();
-		}
-
-		foreach($models as $model)
-		{
-			$options[$model->getAttribute($valueColumn)] = $model->getAttribute($textColumn);
-		}
-
-		return $options;
-	}
-
-
-	/**
-	 * Add a placeholder drop down menu option
-	 *
-	 * @param      $label
-	 * @param null $value
-	 *
-	 * @return BaseModel|mixed
-	 */
-	public static function withPlaceholder($label, $value = null)
-	{
-		self::$ddlPlaceholder[$value] = $label;
-
-		return self::getInstance();
-	}
-
-
-	/**
-	 * Add one or more placeholder drop down menu options
-	 *
-	 * @param array $placeholders
-	 *
-	 * @return BaseModel|mixed
-	 */
-	public static function withPlaceholders(array $placeholders)
-	{
-		foreach($placeholders as $label => $value)
-		{
-			self::withPlaceholder($label, $value);
-		}
-
-		return self::getInstance();
-	}
 }
