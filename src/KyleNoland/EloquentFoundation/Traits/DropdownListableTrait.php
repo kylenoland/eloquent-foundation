@@ -5,25 +5,19 @@ trait DropdownListableTrait {
 	/**
 	 * Get an array of drop down menu options
 	 *
-	 * @param string $valueColumn
-	 * @param string $textColumn
-	 *
 	 * @return array
 	 */
-	public static function getDdlOptions($valueColumn = 'id', $textColumn = 'name', array $placeholders = null)
+	public static function getDdlOptions()
 	{
+		$args = func_get_args();
+
+		$valueAttribute = isset($args['value']) ? $args['value'] : 'id';
+		$textAttribute  = isset($args['text']) ? $args['text'] : 'name';
+		$placeholders   = isset($args['placeholders']) ? $args['placeholders'] : array();
+
 		$models = self::all();
 
-		$options = array();
-
-		//
-		// Prepend an array of placeholder options
-		//
-
-		if( ! is_null($placeholders))
-		{
-			$options = $placeholders;
-		}
+		$options = $placeholders;
 
 		//
 		// Create an array of key/value pairs suitable for creating a dropdown menu
@@ -31,10 +25,25 @@ trait DropdownListableTrait {
 
 		foreach($models as $model)
 		{
-			$options[$model->getAttribute($valueColumn)] = $model->getAttribute($textColumn);
+			$options[$model->getAttribute($valueAttribute)] = $model->getAttribute($textAttribute);
 		}
 
 		return $options;
+	}
+
+
+	/**
+	 * Get a JSON string of drop down menu options
+	 *
+	 * @return string
+	 */
+	public static function getDdlOptionsAsJson()
+	{
+		$args = func_get_args();
+
+		$options = self::getDdlOptions($args);
+
+		return json_encode($options);
 	}
 
 }
