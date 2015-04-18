@@ -6,6 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 class BaseCollection extends Collection {
 
 	/**
+	 * Get the average value of the specified attribute across all collection members
+	 * 
+	 * @param string $attribute
+	 *
+	 * @return float
+	 */
+	public function avg($attribute)
+	{
+		return $this->sum($attribute) / $this->count();
+	}
+
+	/**
 	 * Count the unique values of the specified attribute that appear in the Collection
 	 *
 	 * @param string $attribute
