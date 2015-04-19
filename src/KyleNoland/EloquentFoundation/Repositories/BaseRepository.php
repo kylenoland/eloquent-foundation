@@ -1,6 +1,7 @@
 <?php namespace KyleNoland\EloquentFoundation\Repositories;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use KyleNoland\EloquentFoundation\Contracts\BaseRepositoryContract;
 
 abstract class BaseRepository implements BaseRepositoryContract {
@@ -69,6 +70,26 @@ abstract class BaseRepository implements BaseRepositoryContract {
 		$this->query = null;
 
 		return $this->model->create($data);
+	}
+
+
+	/**
+	 * Create one or more new model records in the database
+	 *
+	 * @param array $data
+	 *
+	 * @return \Illuminate\Database\Eloquent\Collection
+	 */
+	public function createMultiple(array $data)
+	{
+		$models = new Collection();
+
+		foreach($data as $d)
+		{
+			$models->push($this->create($d));
+		}
+
+		return $models;
 	}
 
 

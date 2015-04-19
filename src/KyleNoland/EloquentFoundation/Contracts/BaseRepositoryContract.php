@@ -40,6 +40,16 @@ interface BaseRepositoryContract {
 
 
 	/**
+	 * Create one or more new model records in the database
+	 *
+	 * @param array $data
+	 *
+	 * @return \Illuminate\Database\Eloquent\Collection
+	 */
+	public function createMultiple(array $data);
+
+
+	/**
 	 * Delete models
 	 *
 	 * @return mixed
