@@ -7,7 +7,7 @@ class BaseCollection extends Collection {
 
 	/**
 	 * Get the average value of the specified attribute across all collection members
-	 * 
+	 *
 	 * @param string $attribute
 	 *
 	 * @return float
@@ -64,7 +64,7 @@ class BaseCollection extends Collection {
 	 */
 	public function toCsv($field = 'name')
 	{
-		return implode(',', $this->lists($field));
+		return implode(', ', $this->lists($field));
 	}
 
 
