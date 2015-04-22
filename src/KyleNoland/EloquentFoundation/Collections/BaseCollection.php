@@ -7,7 +7,7 @@ class BaseCollection extends Collection {
 
 	/**
 	 * Get an array of grouped Collections
-	 * 
+	 *
 	 * @param $groupBy
 	 *
 	 * @return array
