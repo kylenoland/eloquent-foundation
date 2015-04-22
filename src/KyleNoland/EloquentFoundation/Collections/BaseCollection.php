@@ -6,6 +6,27 @@ use Illuminate\Database\Eloquent\Model;
 class BaseCollection extends Collection {
 
 	/**
+	 * Get an array of grouped Collections
+	 * 
+	 * @param $groupBy
+	 *
+	 * @return array
+	 */
+	public function arrangeBy($groupBy)
+	{
+		$groupedItems  = $this->groupBy($groupBy);
+		$arrangedItems = array();
+
+		foreach($groupedItems as $groupKey => $arrayOfItems)
+		{
+			$arrangedItems[$groupKey] = new static($arrayOfItems);
+		}
+
+		return $arrangedItems;
+	}
+
+
+	/**
 	 * Get the average value of the specified attribute across all collection members
 	 *
 	 * @param string $attribute
@@ -16,6 +37,7 @@ class BaseCollection extends Collection {
 	{
 		return $this->sum($attribute) / $this->count();
 	}
+
 
 	/**
 	 * Count the unique values of the specified attribute that appear in the Collection
