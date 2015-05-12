@@ -2,34 +2,32 @@
 
 trait DropdownListableTrait {
 
-	/**
-	 * Get an array of drop down menu options
-	 *
-	 * @return array
-	 */
-	public static function getDdlOptions()
-	{
-		$args = func_get_args();
+    /**
+     * Get an array of key/value pairs suitable for use in generating a drop down menu
+     *
+     * @param string $valueAttribute
+     * @param string $textAttribute
+     * @param array $placeholders
+     *
+     * @return array
+     */
+    public static function getDdlOptions($valueAttribute = 'id', $textAttribute = 'name', $placeholders = array())
+    {
+        $models = self::all();
 
-		$valueAttribute = isset($args['value']) ? $args['value'] : 'id';
-		$textAttribute  = isset($args['text']) ? $args['text'] : 'name';
-		$placeholders   = isset($args['placeholders']) ? $args['placeholders'] : array();
+        $options = $placeholders;
 
-		$models = self::all();
+        //
+        // Create an array of key/value pairs suitable for creating a dropdown menu
+        //
 
-		$options = $placeholders;
+        foreach($models as $model)
+        {
+            $options[$model->getAttribute($valueAttribute)] = $model->getAttribute($textAttribute);
+        }
 
-		//
-		// Create an array of key/value pairs suitable for creating a dropdown menu
-		//
-
-		foreach($models as $model)
-		{
-			$options[$model->getAttribute($valueAttribute)] = $model->getAttribute($textAttribute);
-		}
-
-		return $options;
-	}
+        return $options;
+    }
 
 
 	/**
