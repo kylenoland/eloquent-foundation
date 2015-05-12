@@ -10,7 +10,7 @@ Installation
 Install via Composer:
 
     composer require kyle-noland/eloquent-foundation
-    
+
 Add the Service Provider to config/app.php
 
     'providers' => [
@@ -21,54 +21,56 @@ Add the Service Provider to config/app.php
 Usage
 -----
 
-Eloquent Foundation is opinionated and makes some assumptions regarding your database field names. For instance, 
-the PersonTrait assumed that your Eloquent Model contains at least the following attributes:
+Eloquent Foundation is opinionated and makes some assumptions regarding your database field names. For instance,
+the PersonTrait assumes that your Eloquent Model contains at least the following attributes:
 
 - first_name
 - last_name
 - email
 
-Probably the most generally useful components of Eloquent Foundation are the BaseRepositoryContact and BaseRepository
+Most of the Eloquent Foundation classes are small. You should read through them to see how they work.
+
+Probably the most generally useful components of Eloquent Foundation are the BaseRepositoryContract and BaseRepository
 classes. The intent is to provide an Eloquent repository implementation to build upon while maintaining some of the more
-common fluent Eloquent methods. You get a lot of repository boilerplate for free and only have to write your 
-application-specific methods in your child classes.
+common fluent Eloquent methods. *You get a lot of repository boilerplate for free and only have to write your
+application-specific methods in your child classes*.
 
 For example, if you extend the BaseRepository class in your own InvoiceRepository class, you get a lot of good Eloquent
-methods "for free" while keeping direct access to your Eloquent models out of your controllers or service classes. 
+methods "for free" while keeping direct access to your Eloquent models out of your controllers or service classes.
 You can do things like:
 
     class SomeController extends Controller {
-    
+
         protected $invoiceRepo;
-        
+
         public function __construct(InvoiceRepositoryContract $invoiceRepo)
         {
             $this->invoiceRepo = $invoiceRepo;
         }
-        
+
         public function something()
         {
             // Update a specific Invoice record
             $invoice = $this->invoiceRepo->updateById($id, $data);
-            
+
             // Retrieve a specific Invoice record
             $invoice = $this->invoiceRepo->getById($id);
-            
+
             // Retrieve all the Invoice records
             $invoices = $this->invoiceRepo->all();
-            
+
             // Retrieve a Collection of Invoice records
             $invoices = $this->invoiceRepo->whereIn('id', [1, 2, 3, 10])->get();
-            
+
             // Add the with() method to any "get-style" call to eager load related models
             $invoices = $this->invoiceRepo->with('Company', 'Company.Users')->whereIn('id', [1, 2, 99])->get();
-            
+
             // Delete a particular Invoice record
-            $this->invoiceRepo->deleteById($id);            
+            $this->invoiceRepo->deleteById($id);
         }
-    
+
     }
-    
+
 The BaseRepository class exposes the following boilerplate methods that you can leverage in any of your child classes:
 
     /**
