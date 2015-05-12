@@ -11,6 +11,7 @@ class EloquentFoundationServiceProvider extends ServiceProvider {
 	 */
 	protected $defer = false;
 
+
 	/**
 	 * Bootstrap the application events.
 	 *
@@ -20,6 +21,7 @@ class EloquentFoundationServiceProvider extends ServiceProvider {
 	{
 
 	}
+
 
 	/**
 	 * Register the service provider.
@@ -33,6 +35,7 @@ class EloquentFoundationServiceProvider extends ServiceProvider {
 			'KyleNoland\EloquentFoundation\Repositories\BaseRepository'
 		);
 	}
+
 
 	/**
 	 * Get the services provided by the provider.

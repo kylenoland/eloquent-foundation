@@ -5,7 +5,7 @@ interface BaseRepositoryContract {
 	/**
 	 * Get all the models
 	 *
-	 * @return \Illuminate\Database\Eloquent\Collection|static[]
+	 * @return \Illuminate\Database\Eloquent\Collection
 	 */
 	public function all();
 
@@ -50,7 +50,7 @@ interface BaseRepositoryContract {
 
 
 	/**
-	 * Delete models
+	 * Delete the specified models
 	 *
 	 * @return mixed
 	 */

@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 class BaseCollection extends Collection {
 
 	/**
-	 * Get an array of grouped Collections
+	 * Get an array of grouped Collections. The result is similar to a standard groupBy() operation on an Eloquent
+	 * Collection, except that each array member is itself of an Eloquent Collection.
 	 *
 	 * @param $groupBy
 	 *
@@ -54,6 +55,8 @@ class BaseCollection extends Collection {
 
 	/**
 	 * Delete all the records in the collection
+	 *
+	 * @return void
 	 */
 	public function deleteAll()
 	{
@@ -96,7 +99,7 @@ class BaseCollection extends Collection {
 	 * @param string $attribute
 	 * @param string $value
 	 *
-	 * @return null|Model
+	 * @return \Illuminate\Database\Eloquent\Model|null
 	 */
 	public function firstBy($attribute, $value)
 	{
@@ -127,7 +130,7 @@ class BaseCollection extends Collection {
 	 * @param string $attribute
 	 * @param string $value
 	 *
-	 * @return Model|null
+	 * @return \Illuminate\Database\Eloquent\Model|null
 	 */
 	public function pullFirstBy($attribute, $value)
 	{

@@ -25,7 +25,7 @@ abstract class BaseRepository implements BaseRepositoryContract {
 	/**
 	 * Get all the models
 	 *
-	 * @return \Illuminate\Database\Eloquent\Collection|static[]
+	 * @return \Illuminate\Database\Eloquent\Collection
 	 */
 	public function all()
 	{
@@ -94,7 +94,7 @@ abstract class BaseRepository implements BaseRepositoryContract {
 
 
 	/**
-	 * Delete models
+	 * Delete the specified models
 	 *
 	 * @return mixed
 	 */
@@ -228,7 +228,6 @@ abstract class BaseRepository implements BaseRepositoryContract {
 
 		return $this;
 	}
-
 
 
 	/**

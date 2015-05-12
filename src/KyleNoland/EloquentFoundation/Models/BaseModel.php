@@ -1,12 +1,8 @@
 <?php namespace KyleNoland\EloquentFoundation\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use KyleNoland\EloquentFoundation\Traits\DropdownListableTrait;
 
 class BaseModel extends Model {
-
-	use DropdownListableTrait;
-
 
 	/**
 	 * Models that always get eagerly loaded with this model
