@@ -31,15 +31,17 @@ trait DropdownListableTrait {
 
 
 	/**
-	 * Get a JSON string of drop down menu options
+	 * Get a JSON string of key/value pairs suitable for use in generating a drop down menu
+	 * 
+	 * @param string $valueAttribute
+	 * @param string $textAttribute
+	 * @param array  $placeholders
 	 *
 	 * @return string
 	 */
-	public static function getDdlOptionsAsJson()
+	public static function getDdlOptionsAsJson($valueAttribute = 'id', $textAttribute = 'name', $placeholders = array())
 	{
-		$args = func_get_args();
-
-		$options = self::getDdlOptions($args);
+		$options = self::getDdlOptions($valueAttribute, $textAttribute, $placeholders);
 
 		return json_encode($options);
 	}
